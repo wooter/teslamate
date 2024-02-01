@@ -31,7 +31,7 @@ jobs:
 
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-elixir-deps
         with:
@@ -42,7 +42,7 @@ jobs:
 
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-compiled-dev-build
         with:
@@ -63,7 +63,7 @@ jobs:
 
       - name: Restore PLT cache
         id: plt_cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           key: |
             ${{ runner.os }}-${{ steps.beam.outputs.elixir-version }}-${{ steps.beam.outputs.otp-version }}-plt
@@ -96,7 +96,7 @@ jobs:
 
       - name: Save PLT cache
         id: plt_cache_save
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         if: steps.plt_cache.outputs.cache-hit != 'true'
         with:
           key: |
@@ -145,7 +145,7 @@ jobs:
 
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-elixir-deps
         with:
@@ -156,7 +156,7 @@ jobs:
 
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-compiled-test-build
         with:
